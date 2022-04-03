@@ -2,7 +2,7 @@
   <article>
     {{ metadata.title }}
     {{ metadata.description }}
-    <MarkdownRenderer :content="article" />
+    <MarkdownRenderer :content="content" />
   </article>
 </template>
 
@@ -21,7 +21,17 @@ export interface PostMetadata {
 import yaml from "yaml";
 import post from "@/content/lorem.md?raw";
 
-const parsed = yaml.parseAllDocuments(post);
-const metadata = parsed[0].toJSON() as PostMetadata;
-const article = post.split("---")[2];
+const regexp = /^(---(?:.|\n)*---)?\s*((?:.|\n)*)$/g;
+const matches = [...post.matchAll(regexp)][0];
+
+var metadata = {} as PostMetadata;
+var content = "";
+
+// There is a YAML section
+if (matches[2]) {
+  metadata = yaml.parseDocument(matches[1]).toJSON() as PostMetadata;
+  content = matches[2];
+} else {
+  content = post;
+}
 </script>
