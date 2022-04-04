@@ -10,13 +10,11 @@ import Prism from "prismjs";
 import "@/assets/prism-nord.css";
 
 import "prismjs/plugins/line-numbers/prism-line-numbers";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 import "prismjs/plugins/autolinker/prism-autolinker";
 import "prismjs/plugins/unescaped-markup/prism-unescaped-markup";
 
 import "prismjs/plugins/toolbar/prism-toolbar";
-import "prismjs/plugins/toolbar/prism-toolbar.css";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 
 // I want markdown to be server rendered, it seems this means I cannot
@@ -29,7 +27,7 @@ const md = new MarkdownIt({
   linkify: true,
   typographer: true,
   highlight: (str, lang) => {
-    if (lang && Prism.languages[lang]) {
+    if (Prism.languages[lang]) {
       try {
         return Prism.highlight(str, Prism.languages[lang], lang);
       } catch (__) {}

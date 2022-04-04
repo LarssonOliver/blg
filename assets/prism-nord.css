@@ -6,9 +6,9 @@
 pre[class*="language-"],
 code[class*="language-"] {
   color: #d8dee9;
-  font-size: 1em;
+  font-size: .85rem;
   text-shadow: none;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Source Code Pro, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -23,6 +23,7 @@ code[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
 }
+
 pre[class*="language-"]::selection,
 code[class*="language-"]::selection,
 pre[class*="language-"]::mozselection,
@@ -30,39 +31,47 @@ code[class*="language-"]::mozselection {
   text-shadow: none;
   background: none;
 }
+
 @media print {
+
   pre[class*="language-"],
   code[class*="language-"] {
     text-shadow: none;
   }
 }
+
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
   background: #2e3440;
 }
-:not(pre) > code[class*="language-"] {
+
+:not(pre)>code[class*="language-"] {
   padding: .1em;
   border-radius: .3em;
   color: #d8dee9;
   background: #2e3440;
 }
+
 /*********************************************************
 * Tokens
 */
 .namespace {
   opacity: .7;
 }
+
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
   color: #606e87;
 }
+
 .token.punctuation {
   color: #81a1c1;
 }
+
 .token.property,
 .token.tag,
 .token.boolean,
@@ -72,6 +81,7 @@ pre[class*="language-"] {
 .token.deleted {
   color: #b48ead;
 }
+
 .token.selector,
 .token.attr-name,
 .token.string,
@@ -80,6 +90,7 @@ pre[class*="language-"] {
 .token.inserted {
   color: #a2bf8c;
 }
+
 .token.operator,
 .token.entity,
 .token.url,
@@ -88,39 +99,48 @@ pre[class*="language-"] {
   color: #80a2c1;
   background: none;
 }
+
 .token.atrule,
 .token.attr-value,
 .token.keyword {
   color: #81a1c1;
 }
+
 .token.function {
   color: #8fbcbc;
 }
+
 .token.regex,
 .token.important,
 .token.variable {
   color: #ee9900;
 }
+
 .token.important,
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }
+
 .token.entity {
   cursor: help;
 }
+
 /*********************************************************
 * Line highlighting
 */
 pre[data-line] {
   position: relative;
 }
-pre[class*="language-"] > code[class*="language-"] {
+
+pre[class*="language-"]>code[class*="language-"] {
   position: relative;
   z-index: 1;
 }
+
 .line-highlight {
   position: absolute;
   left: 0;
@@ -133,4 +153,118 @@ pre[class*="language-"] > code[class*="language-"] {
   pointer-events: none;
   line-height: inherit;
   white-space: pre;
+}
+
+/******** LINE NUMBERS ********/
+pre[class*="language-"].line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers>code {
+  position: relative;
+  white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  border-right: 1px solid #4c566a;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+.line-numbers-rows>span {
+  display: block;
+  counter-increment: linenumber;
+}
+
+.line-numbers-rows>span:before {
+  content: counter(linenumber);
+  color: #4c566a;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+
+/******** TOOLBAR ********/
+
+div.code-toolbar {
+  position: relative;
+}
+
+div.code-toolbar>.toolbar {
+  position: absolute;
+  z-index: 10;
+  top: .3em;
+  right: .6em;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+div.code-toolbar:hover>.toolbar {
+  opacity: 1;
+}
+
+/* Separate line b/c rules are thrown out if selector is invalid.
+       IE11 and old Edge versions don't support :focus-within. */
+div.code-toolbar:focus-within>.toolbar {
+  opacity: 1;
+}
+
+div.code-toolbar>.toolbar>.toolbar-item {
+  display: inline-block;
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>a {
+  cursor: pointer;
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>a,
+div.code-toolbar>.toolbar>.toolbar-item>button,
+div.code-toolbar>.toolbar>.toolbar-item>span {
+  color: #d8dee9;
+  font-size: .8em;
+  padding: 0 .5em;
+  background: #3b4252;
+  /* background: rgba(224, 224, 224, 0.2); */
+  /* box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.2); */
+  border-radius: .25em;
+}
+
+div.code-toolbar>.toolbar>.toolbar-item>a:hover,
+div.code-toolbar>.toolbar>.toolbar-item>a:focus,
+div.code-toolbar>.toolbar>.toolbar-item>button:hover,
+div.code-toolbar>.toolbar>.toolbar-item>button:focus,
+div.code-toolbar>.toolbar>.toolbar-item>span:hover,
+div.code-toolbar>.toolbar>.toolbar-item>span:focus {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }

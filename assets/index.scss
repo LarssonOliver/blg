@@ -1,0 +1,110 @@
+@import "nord/src/sass/nord.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $nord0;
+  color: $nord6;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  tab-size: 4;
+}
+
+hr {
+  border-color: $nord3;
+  width: 90%;
+}
+
+a {
+  color: $nord7;
+  text-decoration: none;
+  border-radius: 0.25em;
+  transition: background-color 0.2s ease-in-out 0s;
+}
+
+a:hover,
+a:active,
+a:focus {
+  background-color: rgba($nord3, 0.8);
+}
+
+strong {
+  font-weight: 800;
+}
+
+blockquote {
+  border-left: 0.2em solid rgba($nord8, 0.6);
+  padding-left: 1.5em;
+  margin: 1em 0;
+  
+  // color: rgb(171, 185, 207);
+
+  color: $nord9;
+}
+
+ul,
+ol {
+  margin: 0 0 1em;
+  padding: 0 0 0 1em;
+}
+
+li {
+  margin: 1em 0 1em 0em;
+  position: relative;
+  padding-left: 1em;
+}
+li::marker {
+  color: $nord3;
+}
+
+pre {
+  display: block;
+  padding: .5em 1em;
+  background-color: $nord0;
+  border-radius: 0.25em;
+  border: 1px solid $nord2;
+  color: $nord4;
+}
+
+code {
+  font-family: Source Code Pro;
+  font-weight: 500;
+  font-size: 0.85em;
+  padding: 0.2em 0.4em;
+  background-color: $nord1;
+  border-radius: 0.25em;
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+table, tr, th, td {
+  border: 1px solid $nord2;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.2em 0.4em;
+}
+
+th {
+  background-color: $nord2;
+}
+
+tr:nth-child(even) {
+  background-color: $nord1;
+}
+
+article {
+  text-align: justify;
+}

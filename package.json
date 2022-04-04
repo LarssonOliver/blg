@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-emoji": "^2.0.2",
     "@types/prismjs": "^1.26.0",
     "nuxt3": "latest",
     "sass": "^1.49.11",
