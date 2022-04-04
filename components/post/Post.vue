@@ -1,8 +1,8 @@
 <template>
   <article>
-    <!-- {{ metadata.title }}
-    {{ metadata.description }} -->
-    <MarkdownRenderer :content="post" />
+    {{ metadata.title }}
+    {{ metadata.description }}
+    <MarkdownRenderer :content="content" />
   </article>
 </template>
 
@@ -21,11 +21,13 @@ export interface PostMetadata {
 import yaml from "yaml";
 import post from "@/content/lorem.md?raw";
 
-const regexp = /^(---\n(?:\s*((?:[a-zA-Z]+\:)|-)\s+.*\n)+---)/g;
+const regexp = /^(---\n(?:\s*(?:(?:[a-zA-Z]+\:)|-)\s+.*\n)+---)/g;
 const matches = [...post.matchAll(regexp)][0];
 
 var metadata = {} as PostMetadata;
 var content = post;
+
+console.log(content.substring(matches[0].length));
 
 // There is a YAML section
 if (matches) {
