@@ -21,17 +21,15 @@ export interface PostMetadata {
 import yaml from "yaml";
 import post from "@/content/lorem.md?raw";
 
-const regexp = /^(---(?:.|\n)*---)?\s*((?:.|\n)*)$/g;
-const matches = [...post.matchAll(regexp)];
+const regexp = /^(---\n(?:\s*((?:[a-zA-Z]+\:)|-)\s+.*\n)+---)/g;
+const matches = [...post.matchAll(regexp)][0];
 
-// var metadata = {} as PostMetadata;
-var content = "";
+var metadata = {} as PostMetadata;
+var content = post;
 
-// // There is a YAML section
-// if (matches[2]) {
-//   metadata = yaml.parseDocument(matches[1]).toJSON() as PostMetadata;
-//   content = matches[2];
-// } else {
-//   content = post;
-// }
+// There is a YAML section
+if (matches) {
+  metadata = yaml.parseDocument(matches[0]).toJSON() as PostMetadata;
+  content = content.substring(matches[0].length);
+}
 </script>
