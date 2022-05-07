@@ -17,7 +17,7 @@ body {
 
 hr {
   border-color: $nord3;
-  width: 90%;
+  width: 85%;
 }
 
 a {
@@ -108,3 +108,29 @@ tr:nth-child(even) {
 article {
   text-align: justify;
 }
+
+article h1 {
+  text-align: center;
+  overflow: hidden;
+  padding: 0 5%;
+
+  &:before, &:after {
+    background-color: $nord3;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 45%;
+  }
+
+  &:before {
+    right: 1em;
+    margin-left: -50%;
+  }
+  
+  &:after {
+    left: 1em;
+    margin-right: -50%;
+  }
+} 
