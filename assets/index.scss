@@ -3,12 +3,13 @@
 html,
 body {
   height: 100%;
+  // font-size: 18px;
 }
 
 body {
   background-color: $nord0;
   color: $nord6;
-  font-family: Roboto;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -33,30 +34,21 @@ a:focus {
   background-color: rgba($nord3, 0.8);
 }
 
-strong {
-  font-weight: 800;
-}
-
 blockquote {
-  border-left: 0.2em solid rgba($nord8, 0.6);
+  border-left: .2em solid rgba($nord8, 0.6);
   padding-left: 1.5em;
   margin: 1em 0;
-  
-  // color: rgb(171, 185, 207);
-
   color: $nord9;
 }
 
-ul,
-ol {
-  margin: 0 0 1em;
-  padding: 0 0 0 1em;
+ol,
+ul {
+  padding-left: 2em;
 }
 
 li {
-  margin: 1em 0 1em 0em;
-  position: relative;
-  padding-left: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
 li::marker {
   color: $nord3;
@@ -64,20 +56,19 @@ li::marker {
 
 pre {
   display: block;
-  padding: .5em 1em .75em 1em;
+  padding: .5em 1em .5em 1em;
   background-color: $nord0;
-  border-radius: 0.25em;
+  border-radius: .25em;
   border: 1px solid $nord2;
   color: $nord4;
 }
 
 code {
-  font-family: Source Code Pro;
+  font-family: "Source Code Pro", "Courier New", Courier, monospace;
   font-weight: 500;
-  font-size: 0.85em;
-  padding: 0.2em 0.4em;
+  padding: .25em;
   background-color: $nord1;
-  border-radius: 0.25em;
+  border-radius: .25em;
 }
 
 pre code {
@@ -85,6 +76,11 @@ pre code {
   background-color: transparent;
 }
 
+table {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+}
 table, tr, th, td {
   border: 1px solid $nord2;
 }
@@ -94,7 +90,7 @@ table {
 }
 
 th, td {
-  padding: 0.2em 0.4em;
+  padding: .25em 0.5em;
 }
 
 th {
@@ -109,28 +105,28 @@ article {
   text-align: justify;
 }
 
-article h1 {
-  text-align: center;
-  overflow: hidden;
-  padding: 0 5%;
+// article h1 {
+//   text-align: center;
+//   overflow: hidden;
+//   padding: 0 5%;
 
-  &:before, &:after {
-    background-color: $nord3;
-    content: "";
-    display: inline-block;
-    height: 2px;
-    position: relative;
-    vertical-align: middle;
-    width: 45%;
-  }
+//   &:before, &:after {
+//     background-color: $nord3;
+//     content: "";
+//     display: inline-block;
+//     height: 2px;
+//     position: relative;
+//     vertical-align: middle;
+//     width: 45%;
+//   }
 
-  &:before {
-    right: 1em;
-    margin-left: -50%;
-  }
-  
-  &:after {
-    left: 1em;
-    margin-right: -50%;
-  }
-} 
+//   &:before {
+//     right: 1em;
+//     margin-left: -50%;
+//   }
+
+//   &:after {
+//     left: 1em;
+//     margin-right: -50%;
+//   }
+// }
