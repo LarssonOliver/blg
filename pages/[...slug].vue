@@ -40,14 +40,14 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 
 // Using upper limit here, as I'm counting many "non words" as words.
 const readSpeedWPM = 250;
 
 const { path } = useRoute();
 const { data } = await useAsyncData(`content-${path}`, () => {
-  return queryContent<ParsedContent>()
+  return queryContent<MarkdownParsedContent>()
     .where({ _path: path })
     .only(["title", "author", "date"])
     .findOne();
