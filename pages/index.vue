@@ -1,7 +1,8 @@
 <template>
   <main>
-    <div class="list-item" v-for="item in contentList">
+    <div class="list-item" v-for="(item, key) of contentList">
       <PostListItem :content="item" />
+      <hr v-if="key !== contentList.length - 1" />
     </div>
   </main>
 </template>
