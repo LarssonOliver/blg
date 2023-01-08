@@ -12,6 +12,6 @@
     "sass-loader": "^12.6.0"
   },
   "dependencies": {
-    "nord": "^0.2.1"
+    "nord": "0.2.1"
   }
 }
