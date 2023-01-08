@@ -1,5 +1,7 @@
 <template>
+  <TheHeader />
   <NuxtPage />
+  <TheFooter />
 </template>
 
 <script setup>
