@@ -3,8 +3,7 @@
     <!-- stuff here -->
     <h1>{{ data?.title }}</h1>
     <span>Published {{ formattedDate }} by <strong>{{ data?.author }}</strong>
-    ·
-    {{ readTime }} min read</span>
+    <br>{{ readTime }} min read</span>
   </header>
   <svg xmlns="http://www.w3.org/2000/svg"
        xmlns:xlink="http://www.w3.org/1999/xlink"

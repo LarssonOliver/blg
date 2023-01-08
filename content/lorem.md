@@ -17,7 +17,7 @@ You will like those projects!
 
 ---
 
-# h1 Heading 8-)
+# h1 Headings
 ## h2 Heading
 ### h3 Heading
 #### h4 Heading
@@ -123,6 +123,14 @@ var foo = function (bar) {
 
 console.log(foo(5));
 ```
+
+``` js
+const t = "loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong";
+
+console.log(foo(5));
+```
+
+Test `const test = 2;`{lang="ts"}
 
 ## Tables
 

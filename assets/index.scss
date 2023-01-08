@@ -62,6 +62,7 @@ pre {
   border-radius: .25em;
   border: 1px solid $nord2;
   color: $nord4;
+  overflow-x: auto;
 }
 
 code {
@@ -70,11 +71,14 @@ code {
   padding: .25em;
   background-color: $nord1;
   border-radius: .25em;
+  display: inline-block;
 }
-
 pre code {
   padding: 0;
   background-color: transparent;
+}
+code .line {
+  padding-right: 1em;
 }
 
 table {
