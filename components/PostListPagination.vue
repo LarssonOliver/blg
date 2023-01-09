@@ -59,6 +59,8 @@ span {
 a {
   margin-left: .125em;
   margin-right: .125em;
+  padding-left: .25em;
+  padding-right: .25em;
 }
 
 a.disabled {

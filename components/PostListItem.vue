@@ -16,7 +16,7 @@ const props = defineProps<{
   content: MarkdownParsedContent
 }>();
 
-const date = formatDate(new Date(props.content.date));
+const date = computed(() => formatDate(new Date(props.content.date)));
 </script>
 
 <style scoped>
