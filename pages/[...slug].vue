@@ -1,9 +1,7 @@
 <template>
   <header>
-    <!-- stuff here -->
     <h1>{{ data?.title }}</h1>
-    <span>Published {{ formattedDate }} by <strong>{{ data?.author }}</strong>
-    <br>{{ readTime }} min read</span>
+    <span>{{ formattedDate }} &#183; {{ readTime }} minute{{ readTime !== 1 ? "s" : "" }} read.</span>
   </header>
   <svg xmlns="http://www.w3.org/2000/svg"
        xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -39,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, formatDate } from "#imports";
 import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 
 // Using upper limit here, as I'm counting many "non words" as words.
@@ -53,7 +51,7 @@ const { data } = await useAsyncData(`content-${path}`, () => {
     .findOne();
 });
 
-const formattedDate = new Date(data.value?.date).toDateString();
+const formattedDate = formatDate(new Date(data.value?.date));
 
 const content = ref<HTMLElement | null>(null);
 let readTime = ref(0);

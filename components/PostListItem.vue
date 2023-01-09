@@ -9,13 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types"
+import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
+import { formatDate } from "#imports";
 
 const props = defineProps<{
   content: MarkdownParsedContent
 }>();
 
-const date = new Date(props.content.date).toDateString();
+const date = formatDate(new Date(props.content.date));
 </script>
 
 <style scoped lang="scss">
