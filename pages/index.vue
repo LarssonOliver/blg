@@ -4,6 +4,7 @@
       <PostListItem :content="item" />
       <hr v-if="key !== contentList.length - 1" />
     </div>
+    <PostListPagination />
   </main>
 </template>
 
