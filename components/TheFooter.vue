@@ -7,7 +7,7 @@
 
 <style scoped>
 footer {
-  margin-top: 4em;
+  margin-top: 2em;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;

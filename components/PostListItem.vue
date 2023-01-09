@@ -19,9 +19,7 @@ const props = defineProps<{
 const date = formatDate(new Date(props.content.date));
 </script>
 
-<style scoped lang="scss">
-@import "nord/src/sass/nord.scss";
-
+<style scoped>
 h2 {
   margin-bottom: 0;
 }
