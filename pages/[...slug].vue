@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, formatDate } from "#imports";
+import { ref, onMounted } from "#imports";
 import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
 
 // Using upper limit here, as I'm counting many "non words" as words.
@@ -63,7 +63,7 @@ const { data } = await useAsyncData(`content-${path}`, () => {
     .findOne();
 });
 
-const formattedDate = formatDate(new Date(data.value?.date));
+const formattedDate = new Date(data.value?.date).toDateString();
 
 const content = ref<HTMLElement | null>(null);
 let readTime = ref(0);

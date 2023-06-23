@@ -10,13 +10,12 @@
 
 <script setup lang="ts">
 import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
-import { formatDate } from "#imports";
 
 const props = defineProps<{
   content: MarkdownParsedContent
 }>();
 
-const date = computed(() => formatDate(new Date(props.content.date)));
+const date = computed(() => new Date(props.content.date).toDateString());
 </script>
 
 <style scoped>
