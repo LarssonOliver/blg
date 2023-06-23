@@ -1,12 +1,13 @@
 <template>
-  <header>
+  <header v-if="data">
     <h1>{{ data?.title }}</h1>
     <span>{{ formattedDate }} &#183; {{ readTime }} minute{{ readTime !== 1 ? "s" : "" }} read.</span>
   </header>
   <svg xmlns="http://www.w3.org/2000/svg"
        xmlns:xlink="http://www.w3.org/1999/xlink"
        viewBox="0 24 150 28 "
-       preserveAspectRatio="none">
+       preserveAspectRatio="none"
+       v-if="data">
    <defs>
    <path id="gentle-wave"
      d="M-160 44c30 0
@@ -31,7 +32,18 @@
   </svg>
   <main>
     <article ref="content">
-      <ContentDoc />
+      <ContentDoc>
+        <template #not-found>
+          <p class="not-found">
+            <strong>404:</strong>
+            This page could not be found.
+            <br />
+            <NuxtLink :to="{ name: 'index' }">
+              Back to Post List.
+            </NuxtLink>
+          </p>
+        </template>
+      </ContentDoc>
     </article>
   </main>
 </template>
@@ -104,5 +116,10 @@ svg {
 .parallax4 {
   fill: $nord0;
   transform: translate(20px);
+}
+
+.not-found {
+  width: 100%;
+  text-align: center;
 }
 </style>

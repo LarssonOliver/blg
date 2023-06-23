@@ -1,7 +1,11 @@
 <template>
   <footer>
     <hr />
-    <p>Oliver Larsson © 2023, All Rights Reserved</p>
+    <p>
+    © Oliver Larsson, All Rights Reserved
+    <br/>
+    Thoughts and opinions are my own and not affiliated with my employer(s).
+    </p>
   </footer>
 </template>
 
