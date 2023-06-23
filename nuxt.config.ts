@@ -21,7 +21,7 @@ const config = defineNuxtConfig({
   },
 });
 
-if (process.env.CONTENT_REPO_GITHUB !== undefined) {
+if (process.env.CONTENT_REPO_GITHUB) {
   const content = config.content || {};
 
   content.sources = {

@@ -28,4 +28,7 @@ jobs:
         uses: docker/bake-action@v3
         with:
           push: true
+          set: |
+            blg.args.CONTENT_REPO_GITHUB=${{ secrets.CONTENT_REPO_GITHUB }}
+            blg.args.CONTENT_REPO_GITHUB_TOKEN=${{ secrets.CONTENT_REPO_GITHUB_TOKEN }}
 
