@@ -1,5 +1,5 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
-export default defineNuxtConfig({
+const config = defineNuxtConfig({
   modules: [
     "@nuxt/content",
   ],
@@ -20,3 +20,22 @@ export default defineNuxtConfig({
     },
   },
 });
+
+if (process.env.CONTENT_REPO_GITHUB !== undefined) {
+  const content = config.content || {};
+
+  content.sources = {
+    github: {
+      driver: "github",
+      prefix: "/",
+      repo: process.env.CONTENT_REPO_GITHUB,
+      dir: "content",
+      branch: process.env.CONTENT_REPO_BRANCH || "main",
+      token: process.env.CONTENT_REPO_GITHUB_TOKEN || undefined,
+    },
+  };
+
+  config.content = content;
+}
+
+export default config;
