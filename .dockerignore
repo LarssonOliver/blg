@@ -4,5 +4,11 @@ node_modules/
 README.md
 Dockerfile
 .dockerignore
+*.log
+.nuxt
+nuxt.d.ts
+.output
+.env
+dist
 
 content/
