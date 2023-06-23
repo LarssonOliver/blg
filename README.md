@@ -37,3 +37,12 @@ Run the node-based server;
 npm start
 ```
 
+## Deploy New Release
+
+Bump the version and push the tag:
+
+```bash
+npm version {major,minor,patch}
+git push && git push --tags
+```
+
