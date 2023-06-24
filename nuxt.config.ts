@@ -2,6 +2,7 @@
 const config = defineNuxtConfig({
   modules: [
     "@nuxt/content",
+    "@nuxtjs/robots",
   ],
   content: {
     highlight: {
@@ -20,6 +21,9 @@ const config = defineNuxtConfig({
     },
   },
   ssr: false,
+  robots: {
+    configPath: "./robots.config"
+  },
 });
 
 if (process.env.CONTENT_REPO_GITHUB) {
