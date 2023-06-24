@@ -1,9 +1,11 @@
 <template>
   <main>
-    <div class="list-item" v-for="(item, key) of contentList">
-      <PostListItem :content="item" />
-      <hr v-if="key !== contentList.length - 1" />
-    </div>
+    <ClientOnly>
+      <div class="list-item" v-for="(item, key) of contentList">
+        <PostListItem :content="item" />
+        <hr v-if="key !== contentList.length - 1" />
+      </div>
+    </ClientOnly>
     <PostListPagination :page-size="pageSize" />
   </main>
 </template>
@@ -31,7 +33,7 @@ async function fetchData() {
 
 watch(() => route.query, (query) => {
   page.value = +(query.page || 1)
-fetchData();
+  fetchData();
 });
 
 const contentList = ref<any[]>([]);
