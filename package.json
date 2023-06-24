@@ -8,8 +8,8 @@
   "devDependencies": {
     "@nuxt/content": "^2.2.0",
     "nuxt": "^3.0.0",
-    "sass": "^1.49.11",
-    "sass-loader": "^12.6.0"
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2"
   },
   "dependencies": {
     "nord": "0.2.1"
