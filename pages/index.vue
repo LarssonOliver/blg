@@ -1,11 +1,9 @@
 <template>
   <main>
-    <ClientOnly>
-      <div class="list-item" v-for="(item, key) of contentList">
-        <PostListItem :content="item" />
-        <hr v-if="key !== contentList.length - 1" />
-      </div>
-    </ClientOnly>
+    <div class="list-item" v-for="(item, key) of contentList">
+      <PostListItem :content="item" />
+      <hr v-if="key !== contentList.length - 1" />
+    </div>
     <PostListPagination :page-size="pageSize" />
   </main>
 </template>

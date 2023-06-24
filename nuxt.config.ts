@@ -19,6 +19,7 @@ const config = defineNuxtConfig({
       theme: "nord",
     },
   },
+  ssr: false,
 });
 
 if (process.env.CONTENT_REPO_GITHUB) {
