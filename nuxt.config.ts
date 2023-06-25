@@ -24,6 +24,11 @@ const config = defineNuxtConfig({
   robots: {
     configPath: "./robots.config"
   },
+  routeRules: {
+    "/giscus_theme.css": {
+      headers: { "Access-Control-Allow-Origin": "https://giscus.app" }
+    },
+  },
 });
 
 if (process.env.CONTENT_REPO_GITHUB) {

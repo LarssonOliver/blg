@@ -53,22 +53,18 @@
   </main>
   <div class="comments" v-if="data !== null">
     <hr style="margin-top: 2em; margin-bottom: 2em;"/>
-    <Giscus lang="en" repo="larssonoliver/blg" repo-id="R_kgDOHHMn8g"
-      :theme="`${protocol}//${host}/giscus_theme.css`" category="Post Discussions" category-id="DIC_kwDOHHMn8s4CXcgA"
-      strict="0" reactions-enabled="1" emit-metadata="0" input-position="bottom" loading="lazy" mapping="pathname" />
+    <CommentSection />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "#imports";
 import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
-import Giscus from "@giscus/vue";
 
 // Using upper limit here, as I'm counting many "non words" as words.
 const readSpeedWPM = 250;
 
 const { path } = useRoute();
-const { protocol, host } = useRequestURL();
 const { data } = await useAsyncData(`content-${path}`, () => {
   return queryContent<MarkdownParsedContent>()
     .where({ _path: path })
