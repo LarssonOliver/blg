@@ -118,6 +118,8 @@ Sample text here...
 Syntax highlighting
 
 ``` js
+// Comment
+
 var foo = function (bar) {
   return bar++;
 };
