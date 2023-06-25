@@ -51,7 +51,7 @@
       </ContentDoc>
     </article>
   </main>
-  <div class="comments">
+  <div class="comments" v-if="data !== null">
     <hr style="margin-top: 2em; margin-bottom: 2em;"/>
     <Giscus lang="en" repo="larssonoliver/blg" repo-id="R_kgDOHHMn8g"
       :theme="`${protocol}//${host}/giscus_theme.css`" category="Post Discussions" category-id="DIC_kwDOHHMn8s4CXcgA"
