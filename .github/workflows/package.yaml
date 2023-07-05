@@ -4,6 +4,9 @@ on:
   create:
     tags:
       - v*.*.*
+  push:
+    branches:
+      - "main"
 
 jobs:
   bake:
@@ -12,8 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          submodules: "true"
-          token: ${{ secrets.CONTENT_REPO_GITHUB_TOKEN }}
+          submodules: recursive
+          # token: ${{ secrets.CONTENT_REPO_GITHUB_TOKEN }}
 
 
       - name: Set TAG environment variable
