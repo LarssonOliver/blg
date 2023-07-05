@@ -1,3 +1,4 @@
+import { resolve } from "path"
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 const config = defineNuxtConfig({
   modules: [
@@ -19,6 +20,13 @@ const config = defineNuxtConfig({
       ],
       theme: "nord",
     },
+    sources: {
+      blg_content: {
+        prefix: "/posts",
+        driver: "fs",
+        base: resolve(__dirname, "posts/content")
+      },
+    },
   },
   ssr: false,
   robots: {
@@ -31,21 +39,21 @@ const config = defineNuxtConfig({
   },
 });
 
-if (process.env.CONTENT_REPO_GITHUB) {
-  const content = config.content || {};
+// if (process.env.CONTENT_REPO_GITHUB) {
+//   const content = config.content || {};
 
-  content.sources = {
-    github: {
-      driver: "github",
-      prefix: "/",
-      repo: process.env.CONTENT_REPO_GITHUB,
-      dir: "content",
-      branch: process.env.CONTENT_REPO_BRANCH || "main",
-      token: process.env.CONTENT_REPO_GITHUB_TOKEN || undefined,
-    },
-  };
+//   content.sources = {
+//     github: {
+//       driver: "github",
+//       prefix: "/",
+//       repo: process.env.CONTENT_REPO_GITHUB,
+//       dir: "content",
+//       branch: process.env.CONTENT_REPO_BRANCH || "main",
+//       token: process.env.CONTENT_REPO_GITHUB_TOKEN || undefined,
+//     },
+//   };
 
-  config.content = content;
-}
+//   config.content = content;
+// }
 
 export default config;
