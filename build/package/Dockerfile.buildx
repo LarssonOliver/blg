@@ -7,10 +7,6 @@ RUN npm install
 
 COPY . .
 
-ARG CONTENT_REPO_GITHUB=""
-ARG CONTENT_REPO_GITHUB_TOKEN=""
-ARG CONTENT_REPO_BRANCH="main"
-
 RUN npm run build
 
 # -----------

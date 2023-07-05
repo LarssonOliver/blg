@@ -11,6 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          submodules: "true"
+          token: ${{ secrets.CONTENT_REPO_GITHUB_TOKEN }}
+
 
       - name: Set TAG environment variable
         run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
@@ -34,7 +38,4 @@ jobs:
         uses: docker/bake-action@v3
         with:
           push: true
-          set: |
-            blg.args.CONTENT_REPO_GITHUB="${{ secrets.CONTENT_REPO_GITHUB }}"
-            blg.args.CONTENT_REPO_GITHUB_TOKEN="${{ secrets.CONTENT_REPO_GITHUB_TOKEN }}"
 
