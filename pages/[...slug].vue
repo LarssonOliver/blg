@@ -1,7 +1,7 @@
 <template>
   <header v-if="data">
     <h1>{{ data?.title }}</h1>
-    <span>{{ formattedDate }} &#183; {{ readTime }} minute{{ readTime !== 1 ? "s" : "" }} read.</span>
+    <span>{{ formattedDate }} &#183; {{ readTime }} {{ readTime !== 1 ? "minutes" : "minute" }} read.</span>
   </header>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 "
     preserveAspectRatio="none" v-if="data">
@@ -27,7 +27,7 @@
     </g>
   </svg>
   <main>
-    <article ref="content">
+    <article>
       <ContentDoc>
         <template #not-found>
           <p class="not-found">
@@ -58,36 +58,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "#imports";
 import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
-
-// Using upper limit here, as I'm counting many "non words" as words.
-const readSpeedWPM = 250;
 
 const { path } = useRoute();
 const { data } = await useAsyncData(`content-${path}`, () => {
   return queryContent<MarkdownParsedContent>()
     .where({ _path: path })
-    .only(["title", "author", "date"])
+    .only(["title", "author", "date", "readingTime"])
     .findOne();
 });
 
 const formattedDate = new Date(data.value?.date).toDateString();
-
-const content = ref<HTMLElement | null>(null);
-let readTime = ref(0);
-
-onMounted(() => {
-  const articleText = content.value?.innerText || "";
-  const wordCount = wc(articleText);
-  readTime.value = Math.ceil(wordCount / readSpeedWPM);
-});
-</script>
-
-<script lang="ts">
-function wc(text: string): number {
-  return text.trim().split(/\s+/).length;
-}
+const readTime = Math.ceil(data.value?.readingTime.minutes);
 </script>
 
 <style scoped lang="scss">

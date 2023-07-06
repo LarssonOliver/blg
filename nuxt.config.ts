@@ -7,6 +7,11 @@ const config = defineNuxtConfig({
     "@nuxtjs/robots",
   ],
   content: {
+    markdown: {
+      remarkPlugins: [
+        "remark-reading-time",
+      ],
+    },
     highlight: {
       preload: [
         "diff",
