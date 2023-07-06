@@ -35,7 +35,7 @@ watch(() => route.query, (query) => {
 });
 
 const contentList = ref<any[]>([]);
-fetchData();
+await fetchData();
 </script>
 
 <style scoped>
