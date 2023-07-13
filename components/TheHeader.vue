@@ -2,11 +2,13 @@
   <nav>
     <p class="page-title">Oliver Larsson</p>
     <div class="navigation">
-      <NuxtLink to="/">Blog</NuxtLink>
+      <NuxtLink to="/">Home</NuxtLink>
       |
       <a href="https://www.larssonoliver.com">Portfolio</a>
       |
       <a href="https://github.com/LarssonOliver">GitHub</a>
+      |
+      <a href="https://www.linkedin.com/in/larssonoliver">LinkedIn</a>
     </div>
     <hr />
   </nav>
