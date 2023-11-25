@@ -7,7 +7,7 @@ on:
 
 jobs:
   bake:
-    runs-on: self-hosted
+    runs-on: blg-runner-set
     steps:
       - name: Checkout
         uses: actions/checkout@v3
