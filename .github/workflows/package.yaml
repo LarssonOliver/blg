@@ -9,6 +9,11 @@ jobs:
   bake:
     runs-on: blg-runner-set
     steps:
+      - name: Ensure new enough git version is installed.
+        run: |
+          apt update
+          apt install -y git
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
