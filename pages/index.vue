@@ -19,7 +19,7 @@ const page = ref(+(route.query.page || 1));
 async function fetchData() {
   const { data } = await useAsyncData(() => {
     return queryContent<MarkdownParsedContent>()
-      .only(["title", "author", "date", "description", "_path"])
+      .only(["title", "author", "date", "description", "_path", "external", "externalUrl", "language"])
       .sort({ date: -1 })
       .skip(pageSize * (page.value - 1))
       .limit(pageSize)

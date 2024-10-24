@@ -1,10 +1,15 @@
 <template>
-  <h2>
+  <h2 v-if="content.external">
+    <NuxtLink :to="content.externalUrl" target="_blank">
+      {{ content.title }}
+    </NuxtLink>
+  </h2>
+  <h2 v-else>
     <NuxtLink :to="content._path">
       {{ content.title }}
     </NuxtLink>
   </h2>
-  <span>{{ date }}</span>
+  <span>{{ content.external ? "External Post - " : "" }}{{ content.language ? `${content.language} - ` : "" }}{{ date }}</span>
   <p>{{ content.description }}</p>
 </template>
 
