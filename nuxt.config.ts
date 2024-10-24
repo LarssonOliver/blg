@@ -6,6 +6,7 @@ const config = defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/robots",
   ],
+  compatibilityDate: "2024-10-24",
   content: {
     markdown: {
       remarkPlugins: [
