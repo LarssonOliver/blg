@@ -9,7 +9,8 @@
       {{ content.title }}
     </NuxtLink>
   </h2>
-  <span>{{ content.external ? "External Post - " : "" }}{{ content.language ? `${content.language} - ` : "" }}{{ date }}</span>
+  <span>{{ content.external ? "External Post - " : "" }}{{ content.language ? `${content.language} - ` : "" }}{{ date
+    }}{{ authorString }}</span>
   <p>{{ content.description }}</p>
 </template>
 
@@ -21,6 +22,12 @@ const props = defineProps<{
 }>();
 
 const date = computed(() => new Date(props.content.date).toDateString());
+const authorString = computed(() => {
+  if (props.content.author && props.content.author !== "Oliver Larsson") {
+    return ` - By ${props.content.author}`;
+  }
+  return "";
+});
 </script>
 
 <style scoped>
