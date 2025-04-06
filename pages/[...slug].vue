@@ -1,10 +1,10 @@
 <template>
-  <header v-if="data">
-    <h1>{{ data?.title }}</h1>
+  <header v-if="page">
+    <h1>{{ page?.title }}</h1>
     <span>{{ formattedDate }} &#183; {{ readTime }} {{ readTime !== 1 ? "minutes" : "minute" }} read.</span>
   </header>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 "
-    preserveAspectRatio="none" v-if="data">
+    preserveAspectRatio="none" v-if="page">
     <defs>
       <path id="gentle-wave" d="M-160 44c30 0
        58-18 88-18s
@@ -28,17 +28,7 @@
   </svg>
   <main>
     <article>
-      <ContentDoc>
-        <template #not-found>
-          <p class="not-found">
-            <strong>404:</strong>
-            This page could not be found.
-            <br />
-            <NuxtLink :to="{ name: 'index' }">
-              Back to Post List.
-            </NuxtLink>
-          </p>
-        </template>
+      <ContentRenderer v-if="page" :value="page">
         <template #empty>
           <p class="not-found">
             This article appears to be empty.
@@ -48,32 +38,38 @@
             </NuxtLink>
           </p>
         </template>
-      </ContentDoc>
+      </ContentRenderer>
+      <p v-else class="not-found">
+        <strong>404:</strong>
+        This page could not be found.
+        <br />
+        <NuxtLink :to="{ name: 'index' }">
+          Back to Post List.
+        </NuxtLink>
+      </p>
     </article>
   </main>
-  <div class="comments" v-if="data !== null">
-    <hr style="margin-top: 2em; margin-bottom: 2em;"/>
+  <div class="comments" v-if="page !== null && page.body">
+    <hr style="margin-top: 2em; margin-bottom: 2em;" />
     <CommentSection />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
-
 const { path } = useRoute();
-const { data } = await useAsyncData(`content-${path}`, () => {
-  return queryContent<MarkdownParsedContent>()
-    .where({ _path: path })
-    .only(["title", "author", "date", "readingTime"])
-    .findOne();
-});
+const { data: page } = await useAsyncData(path, () =>
+  queryCollection("content")
+    .path(path)
+    .select("title", "author", "date", "body", "meta")
+    .first()
+);
 
-const formattedDate = new Date(data.value?.date).toDateString();
-const readTime = Math.ceil(data.value?.readingTime.minutes);
+const formattedDate = new Date(page.value?.date ?? "").toDateString();
+const readTime = Math.ceil((page.value?.meta.readingTime as { minutes: number }).minutes);
 </script>
 
 <style scoped lang="scss">
-@import "nord/src/sass/nord.scss";
+@use "nord/src/sass/nord.scss" as *;
 
 header,
 article {

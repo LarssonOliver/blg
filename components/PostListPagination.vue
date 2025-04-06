@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types"
-
 const { pageSize = 5 } = defineProps<{
   pageSize?: number
 }>();
@@ -30,9 +28,8 @@ watch(() => route.query, (query) => {
 });
 
 const { data } = await useAsyncData(() => {
-  return queryContent<MarkdownParsedContent>()
-    .only(["title"])
-    .find();
+  return queryCollection("content")
+    .all()
 });
 
 const contentList = data.value || [];
@@ -48,7 +45,8 @@ if (page.value < 1 || page.value > pages) {
 </script>
 
 <style scoped lang="scss">
-@import "nord/src/sass/nord.scss";
+@use "nord/src/sass/nord.scss" as *;
+
 span {
   width: 100%;
   display: inline-block;

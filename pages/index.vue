@@ -9,22 +9,19 @@
 </template>
 
 <script setup lang="ts">
-import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types"
-
 const pageSize = 5;
 
 const route = useRoute();
 const page = ref(+(route.query.page || 1));
 
 async function fetchData() {
-  const { data } = await useAsyncData(() => {
-    return queryContent<MarkdownParsedContent>()
-      .only(["title", "author", "date", "description", "_path", "external", "externalUrl", "language"])
-      .sort({ date: -1 })
-      .skip(pageSize * (page.value - 1))
-      .limit(pageSize)
-      .find();
-  });
+  const { data } = await useAsyncData(() => queryCollection("content")
+    .select("title", "author", "date", "description", "path", "external", "externalUrl", "language")
+    .order("date", "DESC")
+    .skip(pageSize * (page.value - 1))
+    .limit(pageSize)
+    .all()
+  );
 
   contentList.value = data.value || [];
 }

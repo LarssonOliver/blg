@@ -1,42 +1,33 @@
-import { resolve } from "path"
-
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 const config = defineNuxtConfig({
   modules: [
+    ["@nuxtjs/robots", { configPath: "robots.config" }],
+    "@nuxtjs/sitemap",
     "@nuxt/content",
-    "@nuxtjs/robots",
   ],
   compatibilityDate: "2024-10-24",
   content: {
-    markdown: {
-      remarkPlugins: [
-        "remark-reading-time",
-      ],
-    },
-    highlight: {
-      preload: [
-        "diff",
-        "json",
-        "js",
-        "ts",
-        "css",
-        "shell",
-        "html",
-        "md",
-        "yaml",
-      ],
-      theme: "nord",
-    },
-    sources: {
-      blg_content: {
-        prefix: "/posts",
-        driver: "fs",
-        base: resolve(__dirname, "posts/content")
+    build: {
+      markdown: {
+        remarkPlugins: {
+          "remark-reading-time": {},
+        },
+        highlight: {
+          langs: [
+            "diff",
+            "json",
+            "js",
+            "ts",
+            "css",
+            "shell",
+            "html",
+            "md",
+            "yaml",
+          ],
+          theme: "nord",
+        },
       },
     },
-  },
-  robots: {
-    configPath: "./robots.config"
   },
   routeRules: {
     "/giscus_theme.css": {

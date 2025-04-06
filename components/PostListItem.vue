@@ -5,20 +5,18 @@
     </NuxtLink>
   </h2>
   <h2 v-else>
-    <NuxtLink :to="content._path">
+    <NuxtLink :to="content.path">
       {{ content.title }}
     </NuxtLink>
   </h2>
   <span>{{ content.external ? "External Post - " : "" }}{{ content.language ? `${content.language} - ` : "" }}{{ date
     }}{{ authorString }}</span>
-  <p>{{ content.description }}</p>
+  <p>{{ description }}</p>
 </template>
 
 <script setup lang="ts">
-import type { MarkdownParsedContent } from "@nuxt/content/dist/runtime/types";
-
 const props = defineProps<{
-  content: MarkdownParsedContent
+  content: any
 }>();
 
 const date = computed(() => new Date(props.content.date).toDateString());
@@ -27,6 +25,17 @@ const authorString = computed(() => {
     return ` - By ${props.content.author}`;
   }
   return "";
+});
+
+const description = computed(() => {
+  if (!props.content.description)
+    return "";
+
+  let description = props.content.description as string;
+  if (description.endsWith("\\n"))
+    description = description.slice(0, "\\n".length * -1);
+
+  return description;
 });
 </script>
 

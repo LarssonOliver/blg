@@ -1,4 +1,4 @@
-@import "nord/src/sass/nord.scss";
+@use "nord/src/sass/nord.scss" as *;
 
 html,
 body {
