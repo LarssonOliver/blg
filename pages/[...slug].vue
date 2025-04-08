@@ -60,9 +60,15 @@ const { path } = useRoute();
 const { data: page } = await useAsyncData(path, () =>
   queryCollection("posts")
     .path(path)
-    .select("title", "author", "date", "body", "meta")
+    .select("title", "author", "date", "body", "meta", "image")
     .first()
 );
+
+if (page.value?.image) {
+  useSeoMeta({
+    ogImage: page.value.image
+  });
+}
 
 const formattedDate = new Date(page.value?.date ?? "").toDateString();
 const readTime = Math.ceil((page.value?.meta.readingTime as { minutes: number }).minutes);

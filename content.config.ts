@@ -13,6 +13,7 @@ export default defineContentConfig({
           externalUrl: z.string().optional(),
           language: z.string().optional(),
           description: z.string(),
+          image: z.string().optional()
         }),
         source: {
           cwd: "posts",

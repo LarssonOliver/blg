@@ -16,6 +16,9 @@ useHead({
   htmlAttrs: {
     lang: 'en'
   },
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  ]
 });
 
 useSeoMeta({
@@ -24,7 +27,7 @@ useSeoMeta({
   author: 'Oliver Larsson',
   description: "Oliver Larsson's personal blog.",
   ogDescription: "Oliver Larsson's personal blog.",
-//  ogImage: 'https://example.com/image.png',
-//  twitterCard: 'summary_large_image',
+  //  ogImage: 'https://example.com/image.png',
+  //  twitterCard: 'summary_large_image',
 });
 </script>
