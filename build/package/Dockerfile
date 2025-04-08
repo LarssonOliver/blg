@@ -15,8 +15,6 @@ RUN npm run build
 
 FROM node:22-alpine AS runner
 
-USER node
-
 ENV NODE_ENV production
 
 ENV NUXT_HOST 0.0.0.0
