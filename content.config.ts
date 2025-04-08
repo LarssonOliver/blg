@@ -3,7 +3,7 @@ import { asSitemapCollection } from "@nuxtjs/sitemap/content";
 
 export default defineContentConfig({
   collections: {
-    content: defineCollection(
+    posts: defineCollection(
       asSitemapCollection({
         schema: z.object({
           author: z.string(),
@@ -17,6 +17,7 @@ export default defineContentConfig({
         source: {
           cwd: "posts",
           include: "content/*.md",
+          prefix: "/posts",
           exclude: ["**/.*"],
         },
         type: "page",

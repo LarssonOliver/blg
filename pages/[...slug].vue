@@ -58,7 +58,7 @@
 <script setup lang="ts">
 const { path } = useRoute();
 const { data: page } = await useAsyncData(path, () =>
-  queryCollection("content")
+  queryCollection("posts")
     .path(path)
     .select("title", "author", "date", "body", "meta")
     .first()

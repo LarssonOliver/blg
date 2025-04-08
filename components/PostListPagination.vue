@@ -28,7 +28,7 @@ watch(() => route.query, (query) => {
 });
 
 const { data } = await useAsyncData(() => {
-  return queryCollection("content")
+  return queryCollection("posts")
     .all()
 });
 

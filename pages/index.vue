@@ -15,7 +15,7 @@ const route = useRoute();
 const page = ref(+(route.query.page || 1));
 
 async function fetchData() {
-  const { data } = await useAsyncData(() => queryCollection("content")
+  const { data } = await useAsyncData(() => queryCollection("posts")
     .select("title", "author", "date", "description", "path", "external", "externalUrl", "language")
     .order("date", "DESC")
     .skip(pageSize * (page.value - 1))
