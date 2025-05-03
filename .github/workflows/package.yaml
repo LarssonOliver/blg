@@ -5,6 +5,9 @@ on:
     tags:
       - v*.*.*
 
+permissions:
+  contents: read
+
 jobs:
   bake:
     runs-on: blg-runner-set
