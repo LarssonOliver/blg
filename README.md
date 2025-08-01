@@ -46,7 +46,7 @@ Building local image:
 
 ```bash
 # Build image
-docker build -t larssonoliver/larssonoliver.com .
+docker build -t larssonoliver/blg .
 ```
 
 Build multi-arch image for release:
