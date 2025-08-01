@@ -1,17 +1,9 @@
-FROM node:22-alpine AS build
+# See this issue why we don't use alpine https://github.com/WiseLibs/better-sqlite3/issues/716
+FROM node:22 AS build
 
 WORKDIR /app
 
 RUN corepack enable
-
-# See https://github.com/WiseLibs/better-sqlite3/issues/716
-RUN apk update; apk upgrade; apk add --no-cache \
-  autoconf \
-  build-base \
-  coreutils \
-  libtool \
-  pkgconf \
-  python3-dev
 
 COPY package*.json .
 RUN npm install
