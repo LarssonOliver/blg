@@ -6,7 +6,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@nuxt/content": "^3.4.0",
+    "@nuxt/content": "^3.6.3",
     "@nuxtjs/robots": "^5.2.8",
     "@nuxtjs/sitemap": "^7.2.10",
     "nuxt": "^3.17.1",
