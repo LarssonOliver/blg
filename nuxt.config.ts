@@ -28,6 +28,9 @@ const config = defineNuxtConfig({
         },
       },
     },
+    experimental: {
+      nativeSqlite: true,
+    },
   },
   routeRules: {
     "/giscus_theme.css": {
