@@ -10,7 +10,7 @@
     "@nuxtjs/mdc": "^0.17.3",
     "@nuxtjs/robots": "^5.2.8",
     "@nuxtjs/sitemap": "^7.2.10",
-    "nuxt": "^3.17.1",
+    "nuxt": "^3.19.0",
     "remark-reading-time": "^2.0.2",
     "sass": "^1.63.6",
     "sass-loader": "^16.0.5"
