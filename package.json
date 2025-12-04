@@ -10,6 +10,7 @@
     "@nuxtjs/mdc": "^0.17.3",
     "@nuxtjs/robots": "^5.2.8",
     "@nuxtjs/sitemap": "^7.2.10",
+    "baseline-browser-mapping": "^2.9.2",
     "nuxt": "^3.19.0",
     "remark-reading-time": "^2.0.2",
     "sass": "^1.63.6",
@@ -17,7 +18,7 @@
   },
   "dependencies": {
     "@giscus/vue": "^3.1.1",
-    "better-sqlite3": "^12.2.0",
+    "better-sqlite3": "^12.5.0",
     "nord": "0.2.1"
   },
   "version": "0.4.15"
