@@ -1,5 +1,5 @@
 # See this issue why we don't use alpine https://github.com/WiseLibs/better-sqlite3/issues/716
-FROM node:22 AS build
+FROM --platform=$BUILDPLATFORM node:22 AS build
 
 WORKDIR /app
 
