@@ -13,7 +13,7 @@ clone:
 
 steps:
   - name: install
-    image: node:24-alpine
+    image: node:24 # Alpine does not have better-sqlite3
     commands:
       - npm ci
     backend_options: &backops
