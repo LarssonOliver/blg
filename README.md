@@ -3,7 +3,7 @@
 <div align="center">
 
   ![GitHub License](https://img.shields.io/github/license/larssonoliver/blg)
-  ![GitHub branch check runs](https://img.shields.io/github/check-runs/larssonoliver/blg/main?label=build)
+  [![status-badge](https://woodpecker.larssonoliver.com/api/badges/5/status.svg)](https://woodpecker.larssonoliver.com/repos/5)
   ![GitHub package.json version](https://img.shields.io/github/package-json/v/larssonoliver/blg)
 
 </div>
@@ -46,14 +46,18 @@ Building local image:
 
 ```bash
 # Build image
-docker build -t larssonoliver/blg .
+docker build -t git.larssonoliver.com/oliver/blg .
 ```
 
-Build multi-arch image for release:
+## 🚀 Releasing
+
+Release by pushing a new version tag. Easiest done using:
 
 ```bash
-# Builds image tagged both "latest" and the tag based on "git describe"
-TAG="$(git describe --tags --always --dirty)" docker buildx bake
+npm version <major|minor|patch>
+
+# Followed by
+git push --follow-tags
 ```
 
 ## 📄 License
