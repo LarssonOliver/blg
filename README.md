@@ -21,8 +21,8 @@ see you there!
 
 - [Nuxt 3](https://nuxt.com/)
 - [Node.js](https://nodejs.org/)
-- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
-    - Running on self-hosted runners using [GHA Runner Scale Sets](https://github.com/actions/actions-runner-controller).
+- [Woodpecker CI](https://woodpecker-ci.org/) for CI/CD.
+    - Running self-hosted runners.
 - Deployed via self-hosted [Kubernetes](https://kubernetes.io/)
     - [Argo CD](https://argo-cd.readthedocs.io) for GitOps.
 
