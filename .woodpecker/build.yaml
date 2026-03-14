@@ -3,6 +3,14 @@ when:
   - event: push
     branch: main
 
+clone:
+  - name: git
+    image: woodpeckerci/plugin-git
+    settings:
+      recursive: true
+      submodule_override:
+        posts: https://github.com/LarssonOliver/blg-content.git
+
 steps:
   - name: install
     image: node:24-alpine
@@ -22,5 +30,3 @@ steps:
     commands:
       - npm run build
     backend_options: *backops
-
-
