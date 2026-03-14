@@ -2,6 +2,14 @@ when:
   - event: tag
     ref: refs/tags/v*
 
+clone:
+  - name: git
+    image: woodpeckerci/plugin-git
+    settings:
+      recursive: true
+      submodule_override:
+        posts: https://github.com/LarssonOliver/blg-content.git
+
 steps:
   - name: build-and-push
     image: woodpeckerci/plugin-docker-buildx:6.0.4
