@@ -5,7 +5,7 @@ const config = defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxt/content",
   ],
-  compatibilityDate: "2024-10-24",
+  compatibilityDate: "2026-03-20",
   content: {
     build: {
       markdown: {
