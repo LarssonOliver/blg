@@ -1,8 +1,8 @@
 <template>
   <main>
-    <div class="list-item" v-for="(item, key) of contentList">
+    <div class="list-item" v-for="(item, key) of posts">
       <PostListItem :content="item" />
-      <hr v-if="key !== contentList.length - 1" />
+      <hr v-if="key !== posts.length - 1" />
     </div>
     <PostListPagination :page-size="pageSize" />
   </main>
@@ -12,27 +12,17 @@
 const pageSize = 5;
 
 const route = useRoute();
-const page = ref(+(route.query.page || 1));
-
-async function fetchData() {
-  const { data } = await useAsyncData(() => queryCollection("posts")
-    .select("title", "author", "date", "description", "path", "external", "externalUrl", "language")
-    .order("date", "DESC")
-    .skip(pageSize * (page.value - 1))
-    .limit(pageSize)
-    .all()
-  );
-
-  contentList.value = data.value || [];
-}
-
-watch(() => route.query, (query) => {
-  page.value = +(query.page || 1)
-  fetchData();
+const router = useRouter();
+const page = computed({
+  get: () => Number(route.query.page || 1),
+  set: (p: number) => {
+    router.push({
+      query: { ...route.query, page: p },
+    });
+  },
 });
 
-const contentList = ref<any[]>([]);
-await fetchData();
+const { posts } = usePaginatedPosts(page, pageSize);
 </script>
 
 <style scoped>
