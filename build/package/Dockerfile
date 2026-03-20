@@ -1,9 +1,8 @@
-# Using non-alpine for better-sqlite3 package
-FROM --platform=$BUILDPLATFORM node:24 AS build
+FROM --platform=$BUILDPLATFORM node:24-alpine AS build
 
 WORKDIR /app
 
-RUN corepack enable
+# RUN corepack enable
 
 COPY package*.json .
 
